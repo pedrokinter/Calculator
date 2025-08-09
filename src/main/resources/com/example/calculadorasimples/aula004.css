@@ -1,0 +1,24 @@
+/*pra achar um item pelo id no css, eu preciso digitar o nome dele com # e abrir parenteses*/
+/*tambem posso aplicar css pra uma classe inteira de ITENS, colocando . e o nome da classe na frente*/
+
+.root {
+    -fx-background-color: "black";
+}
+
+.label {
+    -fx-alignment: center;
+/*    esse tipo de alinhamento vai alinhar td q esta no tamanho dos container?? */
+/*    exemplo: se eu deixar um label sem estar do tamanho da scene (questao de comprimento), ele nao vai alinhar*/
+}
+
+#titleLabel {
+    -fx-text-fill: white;
+    -fx-border-color: grey;
+
+}
+
+#textLabel {
+    -fx-text-fill: white;
+    -fx-border-color: grey;
+
+}

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.shape.Circle;
 
 // aq vai controlar todos os eventos
-public class Controller {
+public class Controller03 {
     @FXML
     private Circle myCircle;
     private double x;
