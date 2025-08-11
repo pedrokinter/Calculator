@@ -1,0 +1,16 @@
+
+.root {
+    -fx-background-color: #B7894D;
+}
+
+#labelFahrenheit {
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+}
+
+#labelKelvin {
+    -fx-text-fill: white;
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+}

@@ -23,13 +23,14 @@ public class Controller006 {
     @FXML
     public void login(ActionEvent e) throws IOException {
         String name = nameTextField.getText();
-
+        // aq é o nome, e eu vou setar ele dando get no textfield (o texto q vai ser escrito no scene builder)
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interface06pontodois.fxml"));
         root = fxmlLoader.load();
-
+        // crio um root pra dar load na scene, e seto um resource com o .fxml da scene 2
         Controller006pontodois controllerDois = fxmlLoader.getController();
+        // crio um objeto do controlador dois
         controllerDois.displayName(name);
-
+        // e como eu tenho esse objeto, eu posso passar o metodo e mostrar o nome com o atributo atual
 
         //Parent builder = FXMLLoader.load(getClass().getResource("interface06.fxml"));
 
