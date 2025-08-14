@@ -20,8 +20,6 @@ public class aula016 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("interface016.fxml"));
         Scene scene = new Scene(root);
 
-        String css = this.getClass().getResource("ex002.css").toExternalForm();
-        scene.getStylesheets().add(css);
 
         stage.setScene(scene);
         stage.setTitle("Contador Basico");
