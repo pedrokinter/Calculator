@@ -1,0 +1,15 @@
+.root {
+    -fx-background-color: #202020;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-background-color: #3b3b3b;
+    -fx-background-radius: 50px;
+    -fx-background-repeat: 10;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-family: "JetBrains Mono ExtraBold";
+}

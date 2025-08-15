@@ -1,62 +1,42 @@
 package com.example.calculadorasimples;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.input.KeyCode;
+import javafx.scene.control.ProgressBar;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller016  {
+public class Controller016 implements Initializable {
+    @FXML
+    private Button myButton;
     @FXML
     private Label myLabel;
     @FXML
-    private Button mySum;
-    @FXML
-    private Button mySubtraction;
-    @FXML
-    private Button myC;
-    int num = 0;
+    private ProgressBar myProgressBar;
 
-    @FXML
-    private ListView<String> myListView;
+    // é uma classe da biblioteca java math q da ao usuario controle total sobre o arredondamento dos numeros
 
-    private String[] list;
+    BigDecimal progress = new BigDecimal(String.format("%.2f", 0.0)); //o 2f é pra falar qnts casa vai sair na label
+    // e o 0.0 é pra falar qnt q vai começar o progress
 
-
-    public void increaseLabel(ActionEvent event) {
-
-        num++;
-        String increment = "incrementou para " + num;
-        myLabel.setText(String.format("%04d", num));
-        myListView.getItems().add(increment);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        myProgressBar.setStyle("-fx-accent: #00FF00;");
     }
 
-    public void decreaseLabel(ActionEvent event) {
-        num--;
+    @FXML
+    public void increaseProgress() {
+        if (progress.doubleValue() < 1){
+            progress = new BigDecimal(String.format("%.2f", progress.doubleValue() + 1)); // eu tenho q fzr isso
+            // pq big decimal é imutavel
+            myProgressBar.setProgress(progress.doubleValue());
+            myLabel.setText(Integer.toString(progress.intValue()));
+            // aq eu integro o progress pra int pra n ficar dando erro pq o double nao é preciso
 
-        if (num <= 0){
-            num = 0;
         }
-        String decrement = "decrementou para " + num;
-        myLabel.setText(String.format("%04d", num));
-        myListView.getItems().add(decrement);
-
-    }
-
-    public void clearNumber(ActionEvent event) {
-        num = 0;
-        String reset = "resetou para " + num;
-        myLabel.setText(String.format("%04d", num));
-        myListView.getItems().add(reset);
-    }
-
-    public void showList(ActionEvent event) {
-
     }
 }
