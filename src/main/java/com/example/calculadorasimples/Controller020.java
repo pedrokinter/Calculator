@@ -1,0 +1,22 @@
+package com.example.calculadorasimples;
+
+import javafx.fxml.FXML;
+
+public class Controller020 {
+    @FXML
+    public void up(){
+        System.out.println("up!");
+    }
+
+    public void down(){
+        System.out.println("down!");
+    }
+
+    public void left(){
+        System.out.println("left!");
+    }
+
+    public void right(){
+        System.out.println("right!");
+    }
+}

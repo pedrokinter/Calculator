@@ -32,22 +32,22 @@ public class Controller018 implements Initializable {
         TreeItem<String> videos1 = new TreeItem<>("videos1");
         TreeItem<String> videos2 = new TreeItem<>("videos2");
 
-        itemPrincipal.getChildren().addAll(fotos1, fotos2);
-        itemPrincipal2.getChildren().addAll(musicas1, musicas2);
-        itemPrincipal3.getChildren().addAll(videos1, videos2);
-
-        root.getChildren().addAll(itemPrincipal, itemPrincipal2, itemPrincipal3);
-
-        treeView.setRoot(root);
+//        itemPrincipal.getChildren().addAll(fotos1, fotos2);
+//        itemPrincipal2.getChildren().addAll(musicas1, musicas2);
+//        itemPrincipal3.getChildren().addAll(videos1, videos2);
+//
+//        root.getChildren().addAll(itemPrincipal, itemPrincipal2, itemPrincipal3);
+//
+//        treeView.setRoot(root);
     }
 
     public void selectItem() {
-        TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
+//        TreeItem<String> item = treeView.getSelectionModel().getSelectedItem();
 
-        if (item != null) {
-            // isso aq é pra nao dar null pointer exception qnd eu clicar nos items para abrir e chegar nos videos etc
-            System.out.println(item.getValue());
-        }
+//        if (item != null) {
+//            // isso aq é pra nao dar null pointer exception qnd eu clicar nos items para abrir e chegar nos videos etc
+//            System.out.println(item.getValue());
+//        }
     }
 
 

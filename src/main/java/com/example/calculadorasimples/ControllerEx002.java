@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 
 public class ControllerEx002  {
     @FXML
@@ -24,6 +25,7 @@ public class ControllerEx002  {
 
 
     public void increaseLabel(ActionEvent event) {
+
 
         num++;
         String increment = "incrementou para " + num;
@@ -51,7 +53,7 @@ public class ControllerEx002  {
         myListView.getItems().add(reset);
     }
 
-    int cont = 1;
+    private int cont = 1;
     public void showList(ActionEvent event) {
         cont ++;
         if (cont % 2 == 0){
@@ -63,4 +65,9 @@ public class ControllerEx002  {
         }
 
     }
+
+    public void teste(ActionEvent event1){
+
+    }
+
 }
