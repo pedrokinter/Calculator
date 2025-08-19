@@ -3,6 +3,8 @@ package com.example.calculadorasimples;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.util.Objects;
 
@@ -16,12 +18,43 @@ public class ControllerEx003 {
     @FXML
     private TextField idadeField;
 
+    TextFormatter<String> formatterIdade = new TextFormatter<>(change -> {
+        String text = change.getControlNewText();
+
+        if (text.length() > 3){
+            return null;
+        }
+
+        for(char c : text.toCharArray()){
+            if (!Character.isDigit(c)){
+                return null;
+            }
+        }
+
+        return change;
+    });
+
+    TextFormatter<String> formatterNome = new TextFormatter<>(change -> {
+        String text = change.getControlNewText();
+
+        if (text.isEmpty()) {
+            return null;
+        }
+
+        if (!text.contains("@")){
+            return null;
+        }
+
+       return change;
+    });
+
+
     @FXML
     public void checkEmail(ActionEvent event) {
-        if (emailField.getText().isEmpty()){
+
             emailField.setPromptText("Digite um email");
             emailField.getPromptText();
-        }
+//            emailField.setTextFormatter(formatterNome);
 
     }
 
@@ -29,7 +62,7 @@ public class ControllerEx003 {
     public void checkIdade(ActionEvent event) {
         idadeField.setPromptText("Digite um idade");
         idadeField.getPromptText();
-
+        idadeField.setTextFormatter(formatterIdade);
 
 
 
