@@ -2,16 +2,27 @@ package com.example.calculadorasimples;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ControllerEx003 implements Initializable {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent builder;
+    private Parent root;
     @FXML
     private TextField nomeField;
 
@@ -34,6 +45,8 @@ public class ControllerEx003 implements Initializable {
             return null;
         }
 
+
+
         for(char c : text.toCharArray()){
             if (!Character.isDigit(c)){
                 return null;
@@ -42,6 +55,7 @@ public class ControllerEx003 implements Initializable {
 
         return change;
     });
+
 
     TextFormatter<String> formatterNome = new TextFormatter<>(change -> {
         String text = change.getControlNewText();
@@ -57,28 +71,19 @@ public class ControllerEx003 implements Initializable {
        return change;
     });
 
-    @FXML
-    public void idadeFormatter() {
-        idadeField.setTextFormatter(formatterIdade);
-
-    }
 
     @FXML
     public void checkEmail(ActionEvent event) {
-
             emailField.setPromptText("Digite um email");
             emailField.getPromptText();
             emailField.setTextFormatter(formatterNome);
-
     }
 
     @FXML
     public void checkIdade(ActionEvent event) {
         idadeField.setPromptText("Digite um idade");
         idadeField.getPromptText();
-
-
-
+        idadeField.setTextFormatter(formatterIdade);
     }
 
     @FXML
@@ -96,32 +101,42 @@ public class ControllerEx003 implements Initializable {
         } else {
             salvarButton.setDisable(false);
         }
-
     }
 
+    CheckBoxTreeItem<String> Hobbies = new CheckBoxTreeItem<>("Hobbies");
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
         CheckBoxTreeItem<String> desenhar = new CheckBoxTreeItem<>("Desenhar");
-        CheckBoxTreeItem<String> treinar = new CheckBoxTreeItem<>("Desenhar");
+        CheckBoxTreeItem<String> treinar = new CheckBoxTreeItem<>("Treinar");
         CheckBoxTreeItem<String> cheirar = new CheckBoxTreeItem<>("Cheirar");
-
-        CheckBoxTreeItem<String> Hobbies = new CheckBoxTreeItem<>("Hobbies");
+        CheckBoxTreeItem<String> ler = new CheckBoxTreeItem<>("Ler");
+        CheckBoxTreeItem<String> jogar = new CheckBoxTreeItem<>("Jogar");
 
         Hobbies.setExpanded(true);
+
         Hobbies.getChildren().add(desenhar);
         Hobbies.getChildren().add(treinar);
-
+        Hobbies.getChildren().add(cheirar);
+        Hobbies.getChildren().add(ler);
+        Hobbies.getChildren().add(jogar);
 
         treeView.setRoot(Hobbies);
         treeView.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
+        }
 
-        int contador = 0;
+        @FXML
+        public void salvarDados(ActionEvent event) throws IOException {
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003pontodois"));
+            root = fxmlLoader.load();
+
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
 
-
-
-
-    }
+        }
 
     }
 
