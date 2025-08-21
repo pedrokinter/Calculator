@@ -45,8 +45,6 @@ public class ControllerEx003 implements Initializable {
             return null;
         }
 
-
-
         for(char c : text.toCharArray()){
             if (!Character.isDigit(c)){
                 return null;
@@ -57,37 +55,59 @@ public class ControllerEx003 implements Initializable {
     });
 
 
-    TextFormatter<String> formatterNome = new TextFormatter<>(change -> {
+    TextFormatter<String> formatterEmail = new TextFormatter<>(change -> {
         String text = change.getControlNewText();
 
-        if (text.isEmpty()) {
-            return null;
-        }
-
-        if (!text.contains("@")){
-            return null;
-        }
+//        if (text.contains("@") && text.contains(".")){
+//            salvarButton.setDisable(false);
+//        } else {
+//            salvarButton.setDisable(true);
+//            return change;
+//        }
 
        return change;
+
     });
 
-
     @FXML
-    public void checkEmail(ActionEvent event) {
-            emailField.setPromptText("Digite um email");
-            emailField.getPromptText();
-            emailField.setTextFormatter(formatterNome);
+    public void salvarDados(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003pontodois.fxml"));
+        root = fxmlLoader.load();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML
-    public void checkIdade(ActionEvent event) {
-        idadeField.setPromptText("Digite um idade");
-        idadeField.getPromptText();
+    public void voltar(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003.fxml"));
+        root = fxmlLoader.load();
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    public void msgIdade() {
+        if (idadeField.getText().isEmpty()){
+            idadeField.setPromptText("Digite uma idade");
+            idadeField.getPromptText();
+        }
+
         idadeField.setTextFormatter(formatterIdade);
     }
 
+
     @FXML
-    public void checkNome(ActionEvent event) {
+    public void msgNome() {
         if (nomeField.getText().isEmpty()){
             nomeField.setPromptText("Digite um nome");
             nomeField.getPromptText();
@@ -95,17 +115,30 @@ public class ControllerEx003 implements Initializable {
     }
 
     @FXML
-    public void salvarCheck(ActionEvent event) {
-        if (nomeField.getText().isEmpty() || emailField.getText().isEmpty() || idadeField.getText().isEmpty()) {
-            salvarButton.setDisable(true);
-        } else {
-            salvarButton.setDisable(false);
+    public void msgEmail() {
+        if (emailField.getText().isEmpty()){
+            emailField.setPromptText("Digite um email");
+            emailField.getPromptText();
         }
+
+        emailField.setTextFormatter(formatterEmail);
+
+    }
+
+    @FXML
+    public void salvarCheck() {
+
+
     }
 
     CheckBoxTreeItem<String> Hobbies = new CheckBoxTreeItem<>("Hobbies");
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+
+        msgNome();
+        msgIdade();
+        msgEmail();
+
         CheckBoxTreeItem<String> desenhar = new CheckBoxTreeItem<>("Desenhar");
         CheckBoxTreeItem<String> treinar = new CheckBoxTreeItem<>("Treinar");
         CheckBoxTreeItem<String> cheirar = new CheckBoxTreeItem<>("Cheirar");
@@ -124,19 +157,7 @@ public class ControllerEx003 implements Initializable {
         treeView.setCellFactory(CheckBoxTreeCell.<String>forTreeView());
         }
 
-        @FXML
-        public void salvarDados(ActionEvent event) throws IOException {
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003pontodois"));
-            root = fxmlLoader.load();
-
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-
-        }
 
     }
 

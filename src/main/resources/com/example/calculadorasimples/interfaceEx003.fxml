@@ -36,9 +36,9 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeField" layoutX="24.0" layoutY="74.0" onAction="#checkNome" />
-      <TextField fx:id="emailField" layoutX="24.0" layoutY="175.0" onAction="#checkEmail" />
-      <TextField fx:id="idadeField" layoutX="24.0" layoutY="268.0" onAction="#checkIdade" />
+      <TextField fx:id="nomeField" layoutX="24.0" layoutY="74.0" onAction="#msgNome" />
+      <TextField fx:id="emailField" layoutX="24.0" layoutY="175.0" onAction="#msgEmail" />
+      <TextField fx:id="idadeField" layoutX="24.0" layoutY="268.0" onAction="#msgIdade" />
       <RadioButton layoutX="343.0" layoutY="79.0" mnemonicParsing="false" text="Masculino">
          <toggleGroup>
             <ToggleGroup fx:id="genero" />

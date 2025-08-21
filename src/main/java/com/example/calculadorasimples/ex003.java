@@ -17,7 +17,6 @@ public class ex003 extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("interfaceEx003.fxml"));
         ControllerEx003 controller = new ControllerEx003();
 
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
