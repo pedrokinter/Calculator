@@ -10,6 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -23,6 +27,7 @@ public class ControllerEx003 implements Initializable {
     private Scene scene;
     private Parent builder;
     private Parent root;
+
     @FXML
     private TextField nomeField;
 
@@ -36,7 +41,17 @@ public class ControllerEx003 implements Initializable {
     private Button salvarButton;
 
     @FXML
+    private ToggleGroup genero;
+
+    @FXML
     private TreeView<String> treeView = new TreeView<>();
+
+    @FXML
+    private RadioButton masculinoGenero;
+
+    @FXML
+    private RadioButton femininoGenero;
+
 
     TextFormatter<String> formatterIdade = new TextFormatter<>(change -> {
         String text = change.getControlNewText();
@@ -44,6 +59,7 @@ public class ControllerEx003 implements Initializable {
         if (text.length() > 3){
             return null;
         }
+
 
         for(char c : text.toCharArray()){
             if (!Character.isDigit(c)){
@@ -58,42 +74,51 @@ public class ControllerEx003 implements Initializable {
     TextFormatter<String> formatterEmail = new TextFormatter<>(change -> {
         String text = change.getControlNewText();
 
-//        if (text.contains("@") && text.contains(".")){
-//            salvarButton.setDisable(false);
-//        } else {
-//            salvarButton.setDisable(true);
-//            return change;
-//        }
+        if (!text.contains("@") || !text.contains(".") || nomeField.getText().isEmpty() || idadeField.getText().isEmpty()
+        ) {
+            salvarButton.setDisable(true);
+
+        } else {
+            salvarButton.setDisable(false);
+        }
 
        return change;
 
     });
 
+
+
     @FXML
     public void salvarDados(ActionEvent event) throws IOException {
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003pontodois.fxml"));
         root = fxmlLoader.load();
 
+        ControllerEx003pontodois controller = fxmlLoader.getController();
+
+
+        controller.displayNome(nomeField.getText());
+        controller.displayEmail(emailField.getText());
+        controller.displayIdade(idadeField.getText());
+        if (masculinoGenero.isSelected()) {
+            controller.displayGenero(masculinoGenero.getText());
+        } else if (femininoGenero.isSelected()) {
+            controller.displayGenero(femininoGenero.getText());
+        }
+
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Mostrar Dados registrados");
         stage.show();
 
     }
 
-    @FXML
-    public void voltar(ActionEvent event) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interfaceEx003.fxml"));
-        root = fxmlLoader.load();
-
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
 
     @FXML
     public void msgIdade() {
@@ -108,6 +133,8 @@ public class ControllerEx003 implements Initializable {
 
     @FXML
     public void msgNome() {
+
+
         if (nomeField.getText().isEmpty()){
             nomeField.setPromptText("Digite um nome");
             nomeField.getPromptText();
@@ -125,19 +152,14 @@ public class ControllerEx003 implements Initializable {
 
     }
 
-    @FXML
-    public void salvarCheck() {
-
-
-    }
 
     CheckBoxTreeItem<String> Hobbies = new CheckBoxTreeItem<>("Hobbies");
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+            msgIdade();
+            msgEmail();
+            msgNome();
 
-        msgNome();
-        msgIdade();
-        msgEmail();
 
         CheckBoxTreeItem<String> desenhar = new CheckBoxTreeItem<>("Desenhar");
         CheckBoxTreeItem<String> treinar = new CheckBoxTreeItem<>("Treinar");

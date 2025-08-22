@@ -15,10 +15,12 @@ public class ex003 extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("interfaceEx003.fxml"));
-        ControllerEx003 controller = new ControllerEx003();
+
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Registro de Dados");
         stage.show();
     }
 }

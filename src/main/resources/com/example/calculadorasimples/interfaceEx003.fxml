@@ -39,12 +39,12 @@
       <TextField fx:id="nomeField" layoutX="24.0" layoutY="74.0" onAction="#msgNome" />
       <TextField fx:id="emailField" layoutX="24.0" layoutY="175.0" onAction="#msgEmail" />
       <TextField fx:id="idadeField" layoutX="24.0" layoutY="268.0" onAction="#msgIdade" />
-      <RadioButton layoutX="343.0" layoutY="79.0" mnemonicParsing="false" text="Masculino">
+      <RadioButton fx:id="masculinoGenero" layoutX="343.0" layoutY="79.0" mnemonicParsing="false" text="Masculino">
          <toggleGroup>
             <ToggleGroup fx:id="genero" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="343.0" layoutY="103.0" mnemonicParsing="false" text="Feminino" toggleGroup="$genero" />
+      <RadioButton fx:id="femininoGenero" layoutX="343.0" layoutY="103.0" mnemonicParsing="false" text="Feminino" toggleGroup="$genero" />
       <RadioButton layoutX="343.0" layoutY="128.0" mnemonicParsing="false" text="Prefiro nao falar" toggleGroup="$genero" />
       <Button fx:id="salvarButton" layoutX="213.0" layoutY="417.0" mnemonicParsing="false" onAction="#salvarDados" prefHeight="54.0" prefWidth="130.0" text="SALVAR" />
       <TreeView fx:id="treeView" layoutX="343.0" layoutY="193.0" prefHeight="200.0" prefWidth="200.0" />
