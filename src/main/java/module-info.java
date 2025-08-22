@@ -1,4 +1,4 @@
-module com.example.calculadorasimples {
+module java {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -7,6 +7,8 @@ module com.example.calculadorasimples {
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
 
-    opens com.example.calculadorasimples to javafx.fxml;
-    exports com.example.calculadorasimples;
+    opens aulas to javafx.fxml;
+    exports aulas;
+
 }
+
